@@ -17,7 +17,7 @@ class BooksController < ApplicationController
         book_params = params.require(:book).permit(:year, :month, :inout, :category, :amount)
         @book = Book.new(book_params)
         if@book.save
-            flash[:notice]= "家計簿にデータを一件登録しました"
+            flash[:notice]= "家計簿に#{@book.year}年#{@book.month}月#{@book.inout}を登録しました"
             redirect_to books_path
         else
             flash.now[:alert]= "登録に失敗しました"
